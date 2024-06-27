@@ -16,12 +16,24 @@
   }
 }
 
+main{
+max-width: 1200px;
+margin: auto;}
+
 body {
   font-family: Montserrat;
 }
 
+section{
+margin-top: 32px;}
+
 h1, h2 {
   font-family: NotoSerifDisplay;
+}
+
+button{
+border-radius: 30px;
+padding:  12px 32px;
 }
 
 
