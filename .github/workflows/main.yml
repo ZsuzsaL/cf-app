@@ -6,28 +6,19 @@ on:
     branches: [ main ]
 
 jobs:
-# name/definition of job
+  # name/definition of job
   example-action:
-  # define the runner (the virtual machine it will run on
+    # define the runner (the virtual machine it will run on)
     runs-on: ubuntu-latest
     steps:
-    # this step checks out repository onto the runner
+      # this step checks out repository onto the runner
       - uses: actions/checkout@v4
       
-  # this step uses 'actions/setup-node@v4'  action to install the specified version of the Node.js
-     # - uses: actions/setup-node@v4
-      #  with:
-       #   node-version: '20'
-     # - name: npm install -g bats
-     # - run: bats -v
-     
-     # runs a single command using the runners shell
+      # runs a single command using the runner's shell
       - name: Congratulate myself
-      - run: |
-            echo Congrats you triggered the action
-            echo what is in here?
-            ls -a 
-            echo is git installed?
-            git --version
-
-  
+        run: |
+          echo Congrats you triggered the action
+          echo what is in here?
+          ls -a 
+          echo is git installed?
+          git --version
