@@ -10,7 +10,7 @@ export default function Home() {
           rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
           ipsum dolor sit amet.
         </h4>
-        <button className="bg-lime self-start">Learn more</button>
+        <button className="bg-lime self-start text-black">Learn more</button>
       </section>
       <section>
         <h3>What farmers have say</h3>
