@@ -23,32 +23,49 @@ const config: Config = {
       const md = theme("screens.md", {});
       addUtilities({
         body: {
-          fontSize: theme("fontSize.xs"),
-          lineHeight: theme("lineHeight.sm"),
+          fontSize: theme("fontSize.base"),
+          lineHeight: theme("lineHeight.base"),
+          fontWeight: theme("fontWeight.medium"),
           [`@media (min-width: ${md})`]: {
             fontSize: theme("fontSize.base"),
           },
         },
-        h1: {
-          fontSize: theme("fontSize.2xl"),
-          lineHeight: theme("lineHeight.sm"),
+        bodyS: {
+          fontSize: theme("fontSize.sm"),
+          lineHeight: theme("lineHeight.base"),
           fontWeight: theme("fontWeight.medium"),
           [`@media (min-width: ${md})`]: {
-            fontSize: theme("fontSize.5xl"),
+            fontSize: theme("fontSize.sm"),
+          },
+        },
+         bodyXS: {
+          fontSize: theme("fontSize.xs"),
+          lineHeight: theme("lineHeight.base"),
+          fontWeight: theme("fontWeight.medium"),
+          [`@media (min-width: ${md})`]: {
+            fontSize: theme("fontSize.xs"),
+          },
+        },
+        h1: {
+          fontSize: theme("fontSize.2xl"),
+          lineHeight: theme("lineHeight.base"),
+          fontWeight: theme("fontWeight.medium"),
+          [`@media (min-width: ${md})`]: {
+            fontSize: theme("fontSize.2xl"),
           },
         },
         h2: {
-          fontSize: theme("fontSize.lg"),
-          lineHeight: theme("lineHeight.sm"),
+          fontSize: theme("fontSize.xl"),
+          lineHeight: theme("lineHeight.base"),
           fontWeight: theme("fontWeight.medium"),
           [`@media (min-width: ${md})`]: {
-            fontSize: theme("fontSize.4xl"),
+            fontSize: theme("fontSize.xl"),
           },
         },
         h3: {
-          fontSize: theme("fontSize.md"),
-          lineHeight: theme("lineHeight.sm"),
-          fontWeight: theme("fontWeight.extrabold"),
+          fontSize: theme("fontSize.lg"),
+          lineHeight: theme("lineHeight.base"),
+          fontWeight: theme("fontWeight.bold"),
           [`@media (min-width: ${md})`]: {
             fontSize: theme("fontSize.lg"),
           },
@@ -56,20 +73,9 @@ const config: Config = {
         h4: {
           fontSize: theme("fontSize.md"),
           lineHeight: theme("lineHeight.base"),
-          fontWeight: theme("fontWeight.medium"),
+          fontWeight: theme("fontWeight.bold"),
           [`@media (min-width: ${md})`]: {
-            fontSize: theme("fontSize.lg"),
-          },
-        },
-
-        button: {
-          fontSize: theme("fontSize.2xs"),
-          lineHeight: theme("lineHeight.btn"),
-          fontWeight: theme("fontWeight.semibold"),
-          letterSpacing: theme("letterSpacing.wide"),
-          [`@media (min-width: ${md})`]: {
-            fontSize: theme("fontSize.sm"),
-            lineHeight: theme("lineHeight.xs"),
+            fontSize: theme("fontSize.md"),
           },
         },
       });
@@ -83,9 +89,10 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        blue: "#3479E8",
-        bluegray: "#65758B",
-        red: "#ff0000",
+        lime: "#E3EF89",
+        green: "#365745",
+        clay: "#AC562C",
+        white: "#FFF"
       },
       keyframes: {
         animate: {
@@ -104,17 +111,17 @@ const config: Config = {
       xl: "1440px",
     },
     fontSize: {
-      "2xs": "0.75rem",
-      xs: "0.875rem",
-      sm: "1rem",
-      base: "1.125rem",
-      md: "1.25rem",
-      lg: "1.5rem",
-      xl: "1.75rem",
-      "2xl": "1.875rem",
-      "3xl": "2rem",
-      "4xl": "2.25rem",
-      "5xl": "4.5rem",
+    
+      xs: "0.75rem", //12px
+      sm: "1rem", //16px
+      base: "1.125rem",  //18px
+      md: "1.25rem", //20px
+      lg: "2rem",  //32px
+      xl: "3.25rem", //52px
+      "2xl": "4rem", //64px
+    },
+  lineHeight: {
+      base: "1.4",  
     },
   },
 };
