@@ -1,9 +1,9 @@
 name: Practice Workflow
 
-# what event triggers it 
-on: 
+# what event triggers it
+on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   # name/definition of job
@@ -13,11 +13,10 @@ jobs:
     steps:
       # this step checks out repository onto the runner
       - uses: actions/checkout@v4
-      
+
       # runs a single command using the runner's shell
-      - name: Congratulate myself
+      - name: Basic checks
         run: |
-          echo Congrats you triggered the action
           echo what is in here?
           ls -a 
           echo is git installed?
