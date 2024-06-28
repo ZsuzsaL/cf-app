@@ -1,21 +1,36 @@
-name: Docker Image CI
+name: Publish Docker image
 
 on:
   pull_request:
     branches: ["main"]
 
 jobs:
-  build:
+  build_and_push:
+    name: Build and Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
+
       - name: Install dependencies
         run: npm install
+
       - name: Build the application
         run: npm run build
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag cf-app:pr-${{ github.event.pull_request.number }}
+
+      - name: Build Docker image
+        run: docker build . --file Dockerfile --tag zsuzsacf/cf-next-app:pr-${{ github.event.pull_request.number }}
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_NAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image to Docker Hub
+        run: docker push zsuzsacf/cf-next-app:pr-${{ github.event.pull_request.number }}
