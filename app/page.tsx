@@ -18,6 +18,9 @@ export default function Home() {
         <h3>What farmers have say</h3>
         <TwoImage />
       </section>
+      <section>
+        <h1>We scale regenerative agriculture in Europe</h1>
+      </section>
     </main>
   );
 }
