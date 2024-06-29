@@ -1,3 +1,5 @@
+import TwoImage from "./components/TwoImage";
+
 export default function Home() {
   return (
     <main className="">
@@ -14,6 +16,7 @@ export default function Home() {
       </section>
       <section>
         <h3>What farmers have say</h3>
+        <TwoImage />
       </section>
     </main>
   );
