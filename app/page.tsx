@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <main className="">
       <Header farmName={farmname} />
-      <section className="text-white bg-[url(/images/start_header.jpg)] bg-contain h-[600px] bg-no-repeat p-16 flex justify-center flex-col">
+      <section className="text-white bg-[url(/images/start_header.jpg)] h-[600px] rounded-3xl bg-no-repeat p-16 flex justify-center flex-col">
         <h1>It’s time to transform farming.</h1>
         <h4 className="my-8">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
