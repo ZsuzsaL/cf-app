@@ -14,7 +14,10 @@
     "component:headless": "cypress run --component"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.9.4",
+    "dotenv": "^16.4.5",
     "next": "14.2.4",
+    "pg": "^8.12.0",
     "react": "^18",
     "react-dom": "^18"
   },

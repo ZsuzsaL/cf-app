@@ -1,10 +1,22 @@
+import { query } from "../lib/db";
 import Header from "./components/Header";
 import TwoImage from "./components/TwoImage";
+import { FarmInfoData } from "./types/types";
 
-export default function Home() {
+async function getData(): Promise<FarmInfoData[]> {
+  const result = await query("SELECT * FROM your_table");
+  return result.rows;
+}
+
+export default async function Home() {
+  const data: FarmInfoData[] = await getData();
+
+  const farmname: string =
+    data.length > 0 ? data[0].farmname : "No farm data available";
+
   return (
     <main className="">
-      <Header />
+      <Header farmName={farmname} />
       <section className="text-white bg-[url(/images/start_header.jpg)] bg-contain h-[600px] bg-no-repeat p-16 flex justify-center flex-col">
         <h1>It’s time to transform farming.</h1>
         <h4 className="my-8">
