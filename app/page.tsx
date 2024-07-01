@@ -4,7 +4,7 @@ import TwoImage from "./components/TwoImage";
 import { FarmInfoData } from "./types/types";
 
 async function getData(): Promise<FarmInfoData[]> {
-  const result = await query("SELECT * FROM your_table");
+  const result = await query("SELECT * FROM farmInfo");
   return result.rows;
 }
 
