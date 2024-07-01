@@ -24,8 +24,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set up environment variables
+        run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env.local
+
       - name: Run Cypress tests headlessly
         run: npm run e2e:headless
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Archive test results
         if: always()
