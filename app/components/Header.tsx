@@ -1,8 +1,11 @@
+import { auth, signIn, signOut } from "@/auth";
+
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/images/logo.png";
 
-const Header: React.FC = ({}) => {
+const Header: React.FC = async ({}) => {
+  const session = await auth();
   const navItems = [
     {
       name: "SCT",
@@ -40,7 +43,29 @@ const Header: React.FC = ({}) => {
           );
         })}
       </ul>
-      <button className=" bg-clay ">Login</button>
+      {session && session.user ? (
+        <div className="flex items-center">
+          <h4>{session.user.name}</h4>
+          <form
+            action={async () => {
+              "use server";
+              await signOut();
+            }}
+          >
+            <button type="submit">Sign Out</button>
+          </form>
+        </div>
+      ) : (
+        <form
+          action={async () => {
+            "use server";
+            await signIn();
+          }}
+        >
+          <button type="submit">Sign In</button>
+        </form>
+      )}
+      <form></form>
     </header>
   );
 };

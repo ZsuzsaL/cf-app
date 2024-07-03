@@ -1,31 +1,22 @@
-import Image from "next/image";
-import bea from "../../public/images/beatriz.jpg";
-import farmer from "../../public/images/farmer1.jpg";
+import Image, { StaticImageData } from "next/image";
 
-type Props = {};
+type Props = {
+  image1: StaticImageData;
+  image2: StaticImageData;
+  text1: string;
+  text2: string;
+};
 
-const TwoImage = (props: Props) => {
+const TwoImage: React.FC<Props> = ({ image1, image2, text1, text2 }) => {
   return (
     <div className="flex">
       <figure>
-        <Image src={bea} alt="farmer" className="my-10"></Image>
-        <figcaption>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet.
-        </figcaption>
+        <Image src={image1} alt="farmer" className="my-10"></Image>
+        <figcaption>{text1}</figcaption>
       </figure>
       <figure>
-        <Image src={farmer} alt="farmer" className="my-10"></Image>
-        <figcaption>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet.
-        </figcaption>
+        <Image src={image2} alt="farmer" className="my-10"></Image>
+        <figcaption>{text2}</figcaption>
       </figure>
     </div>
   );
