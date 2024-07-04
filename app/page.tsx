@@ -1,3 +1,5 @@
+import bea from "./../public/images/beatriz.jpg";
+import farmer from "./../public/images/farmer1.jpg";
 import TwoImage from "./components/TwoImage";
 
 export default async function Home() {
@@ -16,7 +18,14 @@ export default async function Home() {
       </section>
       <section>
         <h3>What farmers have say</h3>
-        <TwoImage />
+        <TwoImage
+          image1={bea}
+          image2={farmer}
+          text1="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,"
+          text2="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,"
+        />
       </section>
     </main>
   );
