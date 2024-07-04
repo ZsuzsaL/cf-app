@@ -19,10 +19,6 @@ const Header: React.FC = async ({}) => {
       name: "C+",
       link: "carbon-plus",
     },
-    {
-      name: "Profile",
-      link: "profile",
-    },
   ];
 
   return (
@@ -42,6 +38,11 @@ const Header: React.FC = async ({}) => {
             </li>
           );
         })}
+        {session?.user && (
+          <li>
+            <Link href="profile">Profile</Link>
+          </li>
+        )}
       </ul>
       {session && session.user ? (
         <div className="flex items-center">

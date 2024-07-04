@@ -23,6 +23,13 @@ else return null
  
 export const config=  {
   providers: [Google, credentialsConfig],
+callbacks: {
+authorized({request, auth}){
+const {pathname}= request.nextUrl
+if(pathname==="/profile") return !!auth
+return true
+}
+}
 } satisfies NextAuthConfig
 
 export const {handlers, auth, signIn, signOut}=NextAuth(config)
