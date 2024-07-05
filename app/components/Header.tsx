@@ -4,9 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/images/logo.png";
 
+type NavItem = {
+  name: string;
+  link: string;
+};
+
 const Header: React.FC = async ({}) => {
   const session = await auth();
-  const navItems = [
+  const navItems: NavItem[] = [
     {
       name: "SCT",
       link: "supply-chain-transition",
@@ -27,26 +32,26 @@ const Header: React.FC = async ({}) => {
         <Image
           alt="climate farmers logo"
           src={logo}
-          className="object-contain w-40"
+          className="object-contain w-24 md:w-40"
         />
       </Link>
       <ul className="flex gap-8">
-        {navItems.map((item) => {
+        {/* {navItems.map((item) => {
           return (
             <li key={item.name}>
               <Link href={item.link}>{item.name}</Link>
             </li>
           );
-        })}
-        {session?.user && (
+        })} */}
+        {/* {session?.user && (
           <li>
             <Link href="profile">Profile</Link>
           </li>
-        )}
+        )} */}
       </ul>
       {session && session.user ? (
         <div className="flex items-center">
-          <h4>{session.user.name}</h4>
+          <p>{session.user.name}</p>
           <form
             action={async () => {
               "use server";
@@ -66,7 +71,6 @@ const Header: React.FC = async ({}) => {
           <button type="submit">Sign In</button>
         </form>
       )}
-      <form></form>
     </header>
   );
 };

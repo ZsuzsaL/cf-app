@@ -34,11 +34,44 @@ h1, h2 {
 button{
 border-radius: 30px;
 padding:  12px 32px;
+
 }
+
+@media (max-width: 600px) {
+  button {
+    padding: 8px 16px;
+  }
+}
+
 
 img{
 border-radius: 30px;
 }
+
+label {
+  display: block;
+  font-weight: bold;
+
+}
+
+input[type="text"],
+select {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+margin-top: 5px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
 
 
 
