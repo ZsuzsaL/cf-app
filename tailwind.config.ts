@@ -47,15 +47,15 @@ const config: Config = {
           },
         },
         h1: {
-          fontSize: theme("fontSize.2xl"),
-          lineHeight: theme("lineHeight.base"),
+          fontSize: theme("fontSize.xl"),
+          lineHeight: theme("lineHeight.sm"),
           fontWeight: theme("fontWeight.medium"),
           [`@media (min-width: ${md})`]: {
             fontSize: theme("fontSize.2xl"),
           },
         },
         h2: {
-          fontSize: theme("fontSize.xl"),
+          fontSize: theme("fontSize.lg"),
           lineHeight: theme("lineHeight.base"),
           fontWeight: theme("fontWeight.medium"),
           [`@media (min-width: ${md})`]: {
@@ -63,7 +63,7 @@ const config: Config = {
           },
         },
         h3: {
-          fontSize: theme("fontSize.lg"),
+          fontSize: theme("fontSize.md"),
           lineHeight: theme("lineHeight.base"),
           fontWeight: theme("fontWeight.bold"),
           [`@media (min-width: ${md})`]: {
@@ -71,7 +71,7 @@ const config: Config = {
           },
         },
         h4: {
-          fontSize: theme("fontSize.md"),
+          fontSize: theme("fontSize.base"),
           lineHeight: theme("lineHeight.base"),
           fontWeight: theme("fontWeight.bold"),
           [`@media (min-width: ${md})`]: {
@@ -121,6 +121,7 @@ const config: Config = {
       "2xl": "4rem", //64px
     },
   lineHeight: {
+      sm: "1", 
       base: "1.4",  
     },
   },
