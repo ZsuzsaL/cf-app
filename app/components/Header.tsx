@@ -1,5 +1,9 @@
-import { auth, signIn, signOut } from "@/auth";
-
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+} from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/images/logo.png";
@@ -10,7 +14,6 @@ type NavItem = {
 };
 
 const Header: React.FC = async ({}) => {
-  const session = await auth();
   const navItems: NavItem[] = [
     {
       name: "SCT",
@@ -49,28 +52,15 @@ const Header: React.FC = async ({}) => {
           </li>
         )} */}
       </ul>
-      {session && session.user ? (
+      <SignedIn>
         <div className="flex items-center">
-          <p>{session.user.name}</p>
-          <form
-            action={async () => {
-              "use server";
-              await signOut();
-            }}
-          >
-            <button type="submit">Sign Out</button>
-          </form>
+          {/* <p>{session.user.name}</p> */}
+          <SignOutButton />
         </div>
-      ) : (
-        <form
-          action={async () => {
-            "use server";
-            await signIn();
-          }}
-        >
-          <button type="submit">Sign In</button>
-        </form>
-      )}
+      </SignedIn>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
     </header>
   );
 };
