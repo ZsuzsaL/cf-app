@@ -4,6 +4,6 @@ describe('Home page', () => {
         cy.visit('http://localhost:3000/')
 
         // The new page should contain an h1 with "About"
-        cy.get('h1').contains('time to transform farming.')
+        cy.get('h1').contains('Start you transition journey into regenerative agriculture')
     })
 })
