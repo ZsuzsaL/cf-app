@@ -1,9 +1,4 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignOutButton,
-} from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/images/logo.png";
@@ -55,7 +50,7 @@ const Header: React.FC = async ({}) => {
       <SignedIn>
         <div className="flex items-center">
           {/* <p>{session.user.name}</p> */}
-          <SignOutButton />
+          <UserButton />
         </div>
       </SignedIn>
       <SignedOut>
