@@ -25,7 +25,7 @@ const Header: React.FC = async ({}) => {
   ];
 
   return (
-    <header className="py-4 h-20 flex justify-between items-center">
+    <header className="p-4 h-20 flex justify-between items-center">
       <Link href="/">
         <Image
           alt="climate farmers logo"
@@ -48,10 +48,7 @@ const Header: React.FC = async ({}) => {
         )} */}
       </ul>
       <SignedIn>
-        <div className="flex items-center">
-          {/* <p>{session.user.name}</p> */}
-          <UserButton />
-        </div>
+        <UserButton />
       </SignedIn>
       <SignedOut>
         <SignInButton />
