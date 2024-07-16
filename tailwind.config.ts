@@ -23,7 +23,7 @@ const config: Config = {
       const md = theme("screens.md", {});
       addUtilities({
         body: {
-          fontSize: theme("fontSize.base"),
+          fontSize: theme("fontSize.sm"),
           lineHeight: theme("lineHeight.base"),
           fontWeight: theme("fontWeight.medium"),
           [`@media (min-width: ${md})`]: {
@@ -31,7 +31,7 @@ const config: Config = {
           },
         },
         bodyS: {
-          fontSize: theme("fontSize.sm"),
+          fontSize: theme("fontSize.xs"),
           lineHeight: theme("lineHeight.base"),
           fontWeight: theme("fontWeight.medium"),
           [`@media (min-width: ${md})`]: {
