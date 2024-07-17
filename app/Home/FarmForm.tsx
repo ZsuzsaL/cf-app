@@ -21,10 +21,45 @@ const FarmForm: React.FC = () => {
   } = useForm<IFormInput>({ mode: "onChange" });
 
   // Define the onSubmit handler with the type SubmitHandler<IFormInput>
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
-    router.push("/overview");
-    // Handle form submission logic here
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      // Check if the farm name already exists
+      const checkResponse = await fetch("/api/checkFarmName", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ farmName: data.farmName }),
+      });
+
+      if (checkResponse.ok) {
+        const checkData = await checkResponse.json();
+        if (checkData.exists) {
+          // Farm name already exists, redirect to overview
+          router.push("/overview");
+        } else {
+          // Farm name does not exist, save the new farm info
+          const saveResponse = await fetch("/api/saveFarmInfo", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          if (saveResponse.ok) {
+            console.log("Farm info saved successfully");
+            router.push("/overview");
+          } else {
+            console.error("Failed to save farm info");
+          }
+        }
+      } else {
+        console.error("Failed to check farm name");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
   return (

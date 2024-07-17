@@ -10,7 +10,7 @@ import wa from "../../public/images/wa.png";
 
 import Card from "../components/Card";
 
-const OverView = (props: Props) => {
+const Home = (props: Props) => {
   const cards = [
     {
       img: crops,
@@ -63,4 +63,4 @@ const OverView = (props: Props) => {
   );
 };
 
-export default OverView;
+export default Home;
