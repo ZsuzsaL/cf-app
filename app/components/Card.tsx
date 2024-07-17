@@ -2,18 +2,22 @@ import Image, { StaticImageData } from "next/image";
 
 type Props = {
   image: StaticImageData;
-  text1: string;
-  text2: string;
+  text: string;
+  button: string;
 };
 
-const Card: React.FC<Props> = ({ image, text1, text2 }) => {
+const Card: React.FC<Props> = ({ image, text, button }) => {
   return (
     <section className="rounded-3xl border-black border-4 my-6">
       <figure>
-        <Image src={image} alt="farmer" className="rounded-none w-full" />
+        <Image
+          src={image}
+          alt="farmer"
+          className="rounded-b-none w-full h-36"
+        />
         <figcaption className="border-black border-t-4 p-4">
-          <p> {text1}</p>
-          <button className="underline pl-0">{text2}</button>
+          <p> {text}</p>
+          <button className="underline pl-0">{button}</button>
         </figcaption>
       </figure>
     </section>
