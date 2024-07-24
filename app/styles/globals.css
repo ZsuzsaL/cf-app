@@ -18,7 +18,8 @@
 
 main{
 max-width: 1200px;
-margin: auto;}
+margin: auto;
+padding: 10px}
 
 body {
   font-family: Montserrat;
@@ -45,7 +46,7 @@ padding:  12px 32px;
 
 
 img{
-border-radius: 30px;
+border-radius: 20px;
 }
 
 label {
@@ -54,7 +55,7 @@ label {
 
 }
 
-input[type="text"],
+input,
 select {
   width: 80%;
   padding: 10px;
@@ -65,12 +66,16 @@ margin-top: 5px;
   box-sizing: border-box;
 }
 
-input[type="text"]:focus,
+input:focus,
 select:focus {
   border-color: #4CAF50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
   outline: none;
 }
+
+.error{
+color: red;
+font-size: 0.75rem;}
 
 
 

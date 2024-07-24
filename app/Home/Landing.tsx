@@ -1,8 +1,6 @@
-import { signIn } from "next-auth/react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
-type Props = {};
-
-const Landing = (props: Props) => {
+const Landing = () => {
   return (
     <section>
       <div className="text-left text-white p-8 bg-[url(/images/start_header.jpg)] rounded-3xl bg-no-repeat flex justify-center flex-col my-4">
@@ -13,13 +11,12 @@ const Landing = (props: Props) => {
           your regenerative certification
         </h4>
       </div>
-
-      <button
-        className="bg-lime self-start text-black text-center w-full"
-        onClick={() => signIn()}
-      >
-        Join!
-      </button>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
     </section>
   );
 };
