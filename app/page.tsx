@@ -11,8 +11,6 @@ const Main = () => {
 
   const [hasFarm, setHasFarm] = useState<boolean | null>(null);
 
-  console.log("hasfarm", hasFarm);
-
   // Fetch farm info based on the user's userId
   useEffect(() => {
     const fetchFarmInfo = async () => {

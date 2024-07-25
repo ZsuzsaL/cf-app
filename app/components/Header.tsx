@@ -9,11 +9,14 @@ import {
 } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../public/images/logo.png";
+import menu from "../../public/images/menu.png";
+import SlidingMenu from "./SlidingMenu";
 
 const Header: React.FC = () => {
   const { isSignedIn, user } = useUser();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (isSignedIn && user) {
@@ -56,6 +59,13 @@ const Header: React.FC = () => {
       </Link>
       <SignedIn>
         <UserButton />
+        <Image
+          src={menu}
+          alt="menu"
+          className="cursor-pointer w-8 md:w-12"
+          onClick={() => setIsMenuOpen(true)}
+        />
+        {isMenuOpen && <SlidingMenu setIsMenuOpen={setIsMenuOpen} />}
       </SignedIn>
       <SignedOut>
         <SignInButton />

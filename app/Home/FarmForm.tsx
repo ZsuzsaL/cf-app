@@ -56,6 +56,7 @@ const FarmForm: React.FC = () => {
       <label>
         Farm Name
         <input
+          className="w-full"
           type="text"
           {...register("farmName", { required: "Farm Name is required" })}
         />
@@ -65,6 +66,7 @@ const FarmForm: React.FC = () => {
       <label>
         Region
         <input
+          className="w-full"
           type="text"
           {...register("region", { required: "Region is required" })}
         />
@@ -74,6 +76,7 @@ const FarmForm: React.FC = () => {
       <label>
         Farm Size
         <input
+          className="w-full"
           type="number"
           {...register("farmSize", {
             required: "Farm Size is required",
@@ -87,6 +90,7 @@ const FarmForm: React.FC = () => {
       <label>
         Main Production
         <select
+          className="w-full"
           {...register("mainProduction", {
             required: "Main Production is required",
           })}
