@@ -24,7 +24,7 @@ const SlidingMenu: React.FC<SlidingMenuProps> = ({ setIsMenuOpen }) => {
               </Link>
             </li>
             <li>
-              <Link href="/transition" onClick={handleLinkClick}>
+              <Link href="/transition-journey" onClick={handleLinkClick}>
                 Transition Journey
               </Link>
             </li>
