@@ -9,16 +9,12 @@ datasource db {
 
 model farminfo {
   farmid                     Int       @id @default(autoincrement())
-  userid                     Int?
-  uniquecffarmid             String?   @unique @db.VarChar(255)
+  userid                     String?   @db.VarChar(255)
   farmname                   String?   @db.VarChar(255)
-  farmmanagerfirstname       String?   @db.VarChar(255)
-  farmmanagerlastname        String?   @db.VarChar(255)
-  landownerfirstname         String?   @db.VarChar(255)
-  landownerlastname          String?   @db.VarChar(255)
+  region                     String?   @db.VarChar(255)
+  farmsize                   Int?
+  mainproduction             String?   @db.VarChar(255)
   relationshipmanagerorowner String?   @db.VarChar(255)
-  email                      String?   @db.VarChar(255)
-  farmsize                   String?   @db.VarChar(255)
   address                    String?   @db.VarChar(255)
   postalcode                 String?   @db.VarChar(255)
   farmcoordinatesnorth       String?   @db.VarChar(255)
@@ -30,7 +26,7 @@ model farminfo {
 }
 
 model users {
-  userid       Int        @id @default(autoincrement())
+  userid       String     @id @db.VarChar(255)
   email        String     @unique @db.VarChar(255)
   creationdate DateTime   @default(dbgenerated("CURRENT_DATE")) @db.Date
   farminfo     farminfo[]
