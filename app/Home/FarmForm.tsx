@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 // Define the type for the form data
 interface IFormInput {
   farmName: string;
-  location: string;
+  region: string;
   farmSize: number;
   mainProduction: string;
 }
@@ -23,39 +23,20 @@ const FarmForm: React.FC = () => {
   // Define the onSubmit handler with the type SubmitHandler<IFormInput>
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      // Check if the farm name already exists
-      const checkResponse = await fetch("/api/checkFarmName", {
+      // Farm name does not exist, save the new farm info
+      const saveResponse = await fetch("/api/saveFarmInfo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ farmName: data.farmName }),
+        body: JSON.stringify(data),
       });
 
-      if (checkResponse.ok) {
-        const checkData = await checkResponse.json();
-        if (checkData.exists) {
-          // Farm name already exists, redirect to overview
-          router.push("/overview");
-        } else {
-          // Farm name does not exist, save the new farm info
-          const saveResponse = await fetch("/api/saveFarmInfo", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-
-          if (saveResponse.ok) {
-            console.log("Farm info saved successfully");
-            router.push("/overview");
-          } else {
-            console.error("Failed to save farm info");
-          }
-        }
+      if (saveResponse.ok) {
+        console.log("Farm info saved successfully");
+        router.push("/overview");
       } else {
-        console.error("Failed to check farm name");
+        console.error("Failed to save farm info");
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -77,12 +58,12 @@ const FarmForm: React.FC = () => {
       </label>
 
       <label>
-        Location
+        Region
         <input
           type="text"
-          {...register("location", { required: "Location is required" })}
+          {...register("region", { required: "Region is required" })}
         />
-        {errors.location && <p className="error">{errors.location.message}</p>}
+        {errors.region && <p className="error">{errors.region.message}</p>}
       </label>
 
       <label>
