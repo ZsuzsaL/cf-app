@@ -26,6 +26,7 @@ const Header: React.FC = () => {
             },
             body: JSON.stringify({
               email: user.primaryEmailAddress?.emailAddress,
+              userId: user.id,
             }),
           });
 
