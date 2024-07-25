@@ -1,3 +1,4 @@
+import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -12,6 +13,7 @@ interface IFormInput {
 
 const FarmForm: React.FC = () => {
   const router = useRouter();
+  const { user } = useUser();
 
   // Initialize useForm with the type IFormInput
   const {
@@ -22,6 +24,10 @@ const FarmForm: React.FC = () => {
 
   // Define the onSubmit handler with the type SubmitHandler<IFormInput>
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    const formData = {
+      ...data,
+      userid: user?.id, // Add the userId to the data
+    };
     try {
       // Farm name does not exist, save the new farm info
       const saveResponse = await fetch("/api/saveFarmInfo", {
@@ -29,12 +35,11 @@ const FarmForm: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
       if (saveResponse.ok) {
         console.log("Farm info saved successfully");
-        router.push("/overview");
       } else {
         console.error("Failed to save farm info");
       }
