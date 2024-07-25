@@ -11,18 +11,20 @@ const Main = () => {
 
   const [hasFarm, setHasFarm] = useState<boolean | null>(null);
 
-  // Fetch farm info based on the user's email
+  console.log("hasfarm", hasFarm);
+
+  // Fetch farm info based on the user's userId
   useEffect(() => {
     const fetchFarmInfo = async () => {
-      if (user?.primaryEmailAddress?.emailAddress) {
+      if (user?.id) {
         try {
-          const response = await fetch("/api/getFarmInfoByEmail", {
+          const response = await fetch("/api/getFarmInfoByUserId", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              email: user?.primaryEmailAddress?.emailAddress,
+              userId: user.id,
             }),
           });
 
@@ -43,7 +45,7 @@ const Main = () => {
     };
 
     fetchFarmInfo();
-  }, [user?.primaryEmailAddress?.emailAddress]);
+  }, [user?.id]);
 
   // Display based on the `hasFarm` state
   return (
