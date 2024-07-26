@@ -1,3 +1,4 @@
+import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -5,13 +6,18 @@ import { SubmitHandler, useForm } from "react-hook-form";
 // Define the type for the form data
 interface IFormInput {
   farmName: string;
-  location: string;
+  region: string;
   farmSize: number;
   mainProduction: string;
 }
 
-const FarmForm: React.FC = () => {
+interface FarmFormProps {
+  setHasFarm: (hasFarm: boolean) => void;
+}
+
+const FarmForm: React.FC<FarmFormProps> = ({ setHasFarm }) => {
   const router = useRouter();
+  const { user } = useUser();
 
   // Initialize useForm with the type IFormInput
   const {
@@ -22,40 +28,25 @@ const FarmForm: React.FC = () => {
 
   // Define the onSubmit handler with the type SubmitHandler<IFormInput>
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    const formData = {
+      ...data,
+      userid: user?.id, // Add the userId to the data
+    };
     try {
-      // Check if the farm name already exists
-      const checkResponse = await fetch("/api/checkFarmName", {
+      // Farm name does not exist, save the new farm info
+      const saveResponse = await fetch("/api/saveFarmInfo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ farmName: data.farmName }),
+        body: JSON.stringify(formData),
       });
 
-      if (checkResponse.ok) {
-        const checkData = await checkResponse.json();
-        if (checkData.exists) {
-          // Farm name already exists, redirect to overview
-          router.push("/overview");
-        } else {
-          // Farm name does not exist, save the new farm info
-          const saveResponse = await fetch("/api/saveFarmInfo", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-
-          if (saveResponse.ok) {
-            console.log("Farm info saved successfully");
-            router.push("/overview");
-          } else {
-            console.error("Failed to save farm info");
-          }
-        }
+      if (saveResponse.ok) {
+        console.log("Farm info saved successfully");
+        setHasFarm(true);
       } else {
-        console.error("Failed to check farm name");
+        console.error("Failed to save farm info");
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -70,6 +61,7 @@ const FarmForm: React.FC = () => {
       <label>
         Farm Name
         <input
+          className="w-full"
           type="text"
           {...register("farmName", { required: "Farm Name is required" })}
         />
@@ -77,17 +69,19 @@ const FarmForm: React.FC = () => {
       </label>
 
       <label>
-        Location
+        Region
         <input
+          className="w-full"
           type="text"
-          {...register("location", { required: "Location is required" })}
+          {...register("region", { required: "Region is required" })}
         />
-        {errors.location && <p className="error">{errors.location.message}</p>}
+        {errors.region && <p className="error">{errors.region.message}</p>}
       </label>
 
       <label>
         Farm Size
         <input
+          className="w-full"
           type="number"
           {...register("farmSize", {
             required: "Farm Size is required",
@@ -101,6 +95,7 @@ const FarmForm: React.FC = () => {
       <label>
         Main Production
         <select
+          className="w-full"
           {...register("mainProduction", {
             required: "Main Production is required",
           })}

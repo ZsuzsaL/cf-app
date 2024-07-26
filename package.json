@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "cypress:open": "cypress open",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@clerk/nextjs": "^5.2.2",
     "@neondatabase/serverless": "^0.9.4",
+    "@prisma/client": "^5.17.0",
     "auth": "^1.1.1",
     "dotenv": "^16.4.5",
     "next": "14.2.4",
@@ -36,6 +37,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8.4.38",
+    "prisma": "^5.17.0",
     "start-server-and-test": "^2.0.4",
     "tailwindcss": "^3.4.4",
     "typescript": "^5"

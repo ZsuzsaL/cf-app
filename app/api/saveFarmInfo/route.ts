@@ -2,15 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { query } from '../../../lib/db'; // Adjust the path as necessary
 
 export async function POST(req: NextRequest) {
-  const { farmName, location, farmSize, mainProduction } = await req.json();
+  const { userid, farmName, region, farmSize, mainProduction } = await req.json();
 
   try {
     const insertFarmQuery = `
-      INSERT INTO farmInfo (farmName, location, farmSize, mainProduction, creationDate)
-      VALUES ($1, $2, $3, $4, NOW())
+      INSERT INTO farmInfo (userid, farmName, region, farmSize, mainProduction, creationDate)
+      VALUES ($1, $2, $3, $4, $5, NOW())
       RETURNING farmId
     `;
-    const result = await query(insertFarmQuery, [farmName, location, farmSize, mainProduction]);
+    const result = await query(insertFarmQuery, [userid, farmName, region, farmSize, mainProduction]);
 
     const newFarmId = result.rows[0].farmid;
 
@@ -20,3 +20,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+
