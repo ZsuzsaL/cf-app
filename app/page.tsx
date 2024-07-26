@@ -57,7 +57,7 @@ const Main = () => {
           <section>
             <h2>Welcome!</h2>
             <h4>Tell us about your farm</h4>
-            <FarmForm />
+            <FarmForm setHasFarm={setHasFarm} />
           </section>
         )}
       </SignedIn>

@@ -11,7 +11,11 @@ interface IFormInput {
   mainProduction: string;
 }
 
-const FarmForm: React.FC = () => {
+interface FarmFormProps {
+  setHasFarm: (hasFarm: boolean) => void;
+}
+
+const FarmForm: React.FC<FarmFormProps> = ({ setHasFarm }) => {
   const router = useRouter();
   const { user } = useUser();
 
@@ -40,6 +44,7 @@ const FarmForm: React.FC = () => {
 
       if (saveResponse.ok) {
         console.log("Farm info saved successfully");
+        setHasFarm(true);
       } else {
         console.error("Failed to save farm info");
       }
